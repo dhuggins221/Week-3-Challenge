@@ -4,72 +4,54 @@ var lowerCaseChar = ["abcdefghijklmnopqrstuvwxyz"];
 var upperCaseChar = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 var specialCaseChar = ["!@#$%^&*()"];
 
-function getPass() {
+var getPassLength = function() {
   var passLength = parseInt(
-    prompt('How many characters do you want in your password?')
-  );
-  if (isNotaNumber(passLength) = true) {
-    alert('Password length must be a number');
-    return;
+    window.prompt("How many characters do you want in your password? Must be between 8 and 120")
+  )
+    if (passlength < 8 || passLength > 120) {
+    window.alert("Password needs to be between 8 and 120 characters")
+    getPassLength()
   }
-  if (passLength < 8 ) {
-    alert('Password must contain at least 8 characters')
-  return;
+};
+
+var getPassType = function () {
+  var numbers = window.prompt("Do you want to include numbers in your password?");
+  if (numbers === "yes" || "no") {
+    (numbers === numericChar);
+  } else {
+    window.alert("Please type yes or no")
   }
-  if (passLength > 128) {
-    alert('Password cannot have more than 128 characters')
+  var lowercase = window.prompt("Do you want to include lowercase letters in your password?");
+  if (lowercase === "yes" || "no") {
+    (lowercase === lowerCaseChar);
+  } else {
+    window.alert("Please type yes or no")
   }
-}
-var numbers = confirm(
-  'Click OK to include numbers'
-);
-var lowercase = confirm(
-  'Click OK to include lowercase letters'
-);
-var uppercase = confirm(
-  'Click OK to include uppercase letters'
-);
-var specialChar = confirm(
-  'Click OK to include special characters'
-);
-
-
-var charArray
-if (numbers === true) {
-  charArray.push(numbersChar);
-}
-if (lowercase === true) {
-  charArray.push(lowerCaseChar);
-}
-if (uppercase === true) {
-  charArray.push(upperCaseChar);
-}
-if (specialChar === true) {
-  charArray.push(specialCaseChar);
-}
-
-function createPass(length) {
-  pass = '';
-  var characterLength = characterString.length;
-  for (var i = 0; i < length; i++) {
-    var randomPass = (Math.floor(Math.random() * characterLength));
-    var pass = characterString.charAt(randomPass);
-    console.log(pass);
-    passArray.push(pass);
+  var uppercase = window.prompt("Do you want to include uppercase letters in your password");
+  if (uppercase === "yes" || "no") {
+    (uppercase === upperCaseChar);
+  } else {
+    window.alert("Please type yes or no")
   }
+  var specialChar = window.prompt("Do you want to include special characters in your password?");
+  getPassType()
+  if (specialChar === "yes" || "no") {
+    (specialChar === specialCaseChar);
+  } else {
+    window.alert("Please type yes or no")
+  }
+};
+
+var generatePass = document.querySelector('#generate');
+
+var createPass = function() {
+  var newPass = generatePass()
+  var passText = document.querySelector('#password');
+
+  passText.value = newPass;
 }
 
-passArray = [];
-console.log(pass);
 
-createPass(passLength);
-
-var generatedPass = passArray.join("");
-alert('Your password is: ' + generatedPass);
-
-
-var generate = document.getElementById("generate");
-var password = document.getElementById("password");
-generate.onclick = createPass();
+generatePass.addEventListener("click", createPass);
 
 
