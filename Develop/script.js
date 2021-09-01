@@ -42,6 +42,16 @@ var getPassType = function () {
   }
 };
 
+var getPass = {
+  numbers: numbers,
+  lowercase: lowercase,
+  uppercase: uppercase,
+  specialChar: specialChar,
+  
+};
+
+return getPass;
+
 var generatePass = document.querySelector('#generate');
 
 var createPass = function() {
